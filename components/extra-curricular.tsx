@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import icpcImg from "@/assets/extra/1699213254520.jpeg"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import { useState } from "react"
 
 export function ExtraCurricular() {
   const activities = [
@@ -35,6 +36,29 @@ export function ExtraCurricular() {
       y: 0,
       transition: { duration: 0.6, delay: i * 0.2, ease: "easeOut" },
     }),
+  }
+
+  // Component for card content with "Read More"
+  function CardDescription({ text }: { text: string }) {
+    const [expanded, setExpanded] = useState(false)
+    const maxLength = 150 // max characters before showing "Read More"
+
+    const isLong = text.length > maxLength
+    const displayText = expanded || !isLong ? text : text.slice(0, maxLength) + "..."
+
+    return (
+      <p className="text-muted-foreground leading-relaxed">
+        {displayText}
+        {isLong && (
+          <button
+            className="text-primary ml-1 underline hover:text-emerald-500"
+            onClick={() => setExpanded(!expanded)}
+          >
+            {expanded ? "Read Less" : "Read More"}
+          </button>
+        )}
+      </p>
+    )
   }
 
   return (
@@ -75,7 +99,8 @@ export function ExtraCurricular() {
                 transition: { duration: 0.3 },
               }}
             >
-              <Card className="overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+              <Card className="overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+                {/* Image */}
                 <div className="relative w-full h-48">
                   <Image
                     src={activity.image}
@@ -86,15 +111,14 @@ export function ExtraCurricular() {
                   />
                 </div>
 
+                {/* Header */}
                 <CardHeader>
-                  <CardTitle className="text-xl text-primary">
-                    {activity.title}
-                  </CardTitle>
+                  <CardTitle className="text-xl text-primary">{activity.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {activity.description}
-                  </p>
+
+                {/* Content with fixed height */}
+                <CardContent className="flex-1">
+                  <CardDescription text={activity.description} />
                 </CardContent>
               </Card>
             </motion.div>
