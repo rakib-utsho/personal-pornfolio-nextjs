@@ -1,56 +1,73 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
-import { useRef } from "react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 export function Experience() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const experiences = [
-    {
-      title: "Senior Full Stack Developer",
-      company: "TechCorp Inc.",
-      period: "2022 - Present",
-      description:
-        "Lead development of scalable web applications using React, Node.js, and AWS. Mentored junior developers and implemented CI/CD pipelines that reduced deployment time by 60%.",
-      technologies: ["React", "Node.js", "AWS", "PostgreSQL", "Docker"],
-      achievements: [
-        "Led a team of 5 developers on enterprise-level projects",
-        "Improved application performance by 45% through optimization",
-        "Implemented microservices architecture serving 100k+ users",
-      ],
-    },
-    {
-      title: "Full Stack Developer",
-      company: "StartupXYZ",
-      period: "2020 - 2022",
-      description:
-        "Built and maintained multiple client projects using modern web technologies. Collaborated with design team to implement pixel-perfect UIs and enhanced user engagement by 35%.",
-      technologies: ["Next.js", "Python", "Django", "MongoDB", "GraphQL"],
-      achievements: [
-        "Delivered 15+ client projects on time and within budget",
-        "Reduced API response times by 50% through optimization",
-        "Mentored 3 junior developers and conducted code reviews",
-      ],
-    },
-    {
-      title: "Frontend Developer",
-      company: "WebSolutions Ltd.",
-      period: "2019 - 2020",
-      description:
-        "Developed responsive web applications and improved site performance by 40%. Worked closely with UX designers to enhance user experience and accessibility standards.",
-      technologies: ["JavaScript", "React", "Sass", "REST APIs", "Git"],
-      achievements: [
-        "Improved website loading speed by 40% through optimization",
-        "Implemented responsive designs for 20+ client websites",
-        "Achieved 98% accessibility compliance across all projects",
-      ],
-    },
-  ]
+const experiences = [
+  {
+    title: "Junior Frontend Developer",
+    company: "SM Technology",
+    period: "Apr 2025 – Present",
+    description:
+      "Building and deploying scalable web applications using React.js, Next.js, TypeScript, Redux, and Node.js. Managing server environments on Linux-based VPS and integrating MongoDB for data persistence. Collaborating with teams to deliver high-performance, responsive applications while reviewing code and mentoring juniors.",
+    technologies: [
+      "JavaScript",
+      "React.js",
+      "Node.js",
+      "Next.js",
+      "Redux",
+      "MongoDB",
+      "TypeScript",
+      "VPS",
+      "Linux",
+    ],
+    achievements: [
+      "Implemented CI/CD pipelines, reducing deployment time by 60%",
+      "Improved application performance by 45% through optimization",
+      "Designed and deployed microservices architecture serving 100k+ users",
+    ],
+  },
+
+  {
+    title: "Full Stack Developer (Remote)",
+    company: "Trodev",
+    period: "Feb 2024 – Jun 2024",
+    description:
+      "Developed and maintained full-stack applications using PHP, JavaScript, HTML, and CSS with MongoDB for database management. Utilized GitHub for version control and collaboration. Worked closely with designers to ensure responsive, user-friendly interfaces and delivered client projects within scope and deadlines.",
+    technologies: ["HTML", "CSS", "PHP", "JavaScript", "MongoDB", "GitHub"],
+    achievements: [
+      "Reduced API response times by 50% through backend optimization",
+      "Delivered 5+ client projects successfully within deadlines",
+      "Collaborated effectively in a fully remote environment",
+    ],
+  },
+
+  {
+    title: "Software Quality Testing (Internship)",
+    company: "Bangladesh Computer Council (BCC)",
+    period: "Mar 2024 – Apr 2024",
+    description:
+      "Performed manual and automated software testing using industry-standard testing tools. Created and maintained detailed test documentation, ensuring adherence to QA standards. Collaborated with developers to identify and resolve defects, improving system stability and usability.",
+    technologies: [
+      "Manual Testing",
+      "Automation Tools",
+      "Test Documentation",
+    ],
+    achievements: [
+      "Identified and reported critical bugs improving system reliability",
+      "Created detailed test cases and documentation for QA processes",
+      "Collaborated with developers to enhance software usability",
+    ],
+  },
+];
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -61,7 +78,7 @@ export function Experience() {
         delayChildren: 0.1,
       },
     },
-  }
+  };
 
   const cardVariants = {
     hidden: {
@@ -78,11 +95,14 @@ export function Experience() {
         ease: "easeOut",
       },
     },
-  }
+  };
 
   return (
-    <section id="experience" className="py-20 px-4 bg-gradient-to-br from-muted/20 via-background to-muted/10">
-      <div className="container mx-auto max-w-6xl" ref={ref}>
+    <section
+      id="experience"
+      className="py-20 px-4 bg-gradient-to-br from-muted/20 via-background to-muted/10"
+    >
+      <div className="container mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
@@ -93,7 +113,8 @@ export function Experience() {
             Work Experience
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A journey of growth, innovation, and impactful contributions across diverse tech environments
+            A journey of growth, innovation, and impactful contributions across
+            diverse tech environments
           </p>
         </motion.div>
 
@@ -131,7 +152,9 @@ export function Experience() {
                         </CardTitle>
                         <div className="flex items-center gap-2">
                           <div className="w-2 h-2 rounded-full bg-primary"></div>
-                          <p className="text-lg font-semibold text-foreground">{exp.company}</p>
+                          <p className="text-lg font-semibold text-foreground">
+                            {exp.company}
+                          </p>
                         </div>
                       </div>
                       <Badge
@@ -144,7 +167,9 @@ export function Experience() {
                   </CardHeader>
 
                   <CardContent className="relative z-10 space-y-6">
-                    <p className="text-muted-foreground leading-relaxed text-base">{exp.description}</p>
+                    <p className="text-muted-foreground leading-relaxed text-base">
+                      {exp.description}
+                    </p>
 
                     <div className="space-y-3">
                       <h4 className="font-semibold text-foreground flex items-center gap-2">
@@ -153,7 +178,10 @@ export function Experience() {
                       </h4>
                       <ul className="space-y-2">
                         {exp.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                          <li
+                            key={i}
+                            className="flex items-start gap-3 text-sm text-muted-foreground"
+                          >
                             <div className="w-1 h-1 rounded-full bg-primary/60 mt-2 flex-shrink-0"></div>
                             <span>{achievement}</span>
                           </li>
@@ -186,5 +214,5 @@ export function Experience() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

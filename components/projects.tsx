@@ -78,7 +78,7 @@ export function Projects() {
 
   return (
     <section id="projects" className="py-20 px-4 bg-gradient-to-br from-background via-muted/5 to-background">
-      <div className="container mx-auto max-w-6xl" ref={ref}>
+      <div className="container mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
